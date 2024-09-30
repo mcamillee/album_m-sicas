@@ -2,10 +2,10 @@ public class Musica {
     public String nome;
     public String artista;
     public String compositor;
-    public int duracao;
+    public double duracao;
     public Data dataLancamento;
 
-    public Musica(String nome, String artista, String compositor, int duracao, int dia, int mes, int ano){
+    public Musica(String nome, String artista, String compositor, double duracao, int dia, int mes, int ano){
         dataLancamento = new Data(dia, mes, ano);
         setNome(nome);
         setCompositor(compositor);
@@ -22,7 +22,7 @@ public class Musica {
         return compositor;
     }
 
-    public int getDuracao() {
+    public double getDuracao() {
         return duracao;
     }
 
@@ -38,7 +38,7 @@ public class Musica {
         this.compositor = compositor;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(double duracao) {
         this.duracao = duracao;
     }
 

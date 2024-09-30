@@ -6,8 +6,8 @@ public class Album {
     private int qtdMaximaFaixas;
     private int qtdAtualFaixas;
     private Musica[] musicas;
-    private String musicaz = "" ;
     private boolean tocando = false;
+    private double tempoTotal = 0;
 
     public Album(String nome, int dia, int mes, int ano, int qtdMaximaFaixas){
         setNomeAlbum(nome);
@@ -22,17 +22,15 @@ public class Album {
     public String getAlbumNome(){
        return this.nome;
     }
+    public int getQuantidadeDeMusicas(){
+        return qtdAtualFaixas;
+    }
 
     public void adicionarMusica(Musica musica){
         if(qtdAtualFaixas < qtdMaximaFaixas){
             musicas[qtdAtualFaixas] = musica;
             qtdAtualFaixas++;
-            if(qtdAtualFaixas == 1){
-            musicaz += " " +musica.getNome();
-            }
-            else if(qtdAtualFaixas != 1 ){
-                musicaz += ", " +musica.getNome();
-        }
+
     }
 }
      
@@ -156,11 +154,17 @@ public class Album {
         }
     }
 
+    public void setTempoTotal(){
+        for(Musica musica: musicas ){
+            this.tempoTotal += musica.getDuracao();
+        }
+    }
+
 
     @Override
     public String toString(){
      return "O nome do album é \"" + getAlbumNome() + "\", a data de lançamento foi em " + this.dataLancamento + " e tem " +
-        this.qtdAtualFaixas + " músicas, sendo elas: " + musicaz;
+        this.qtdAtualFaixas + " músicas, tendo a duração total de " + tempoTotal + " minutos.";
         
     
     }
